@@ -270,12 +270,13 @@ app.layout = html.Div(
         html.H6('This first plot displays the raw compensation data from the data sources.'),
         dcc.Graph(id=ids.REAL_WAGES_LINE_PLOT, config={'displayModeBar': False}),
         html.Hr(),
-        html.H6('Have you wondered what your compensation might be if you received the same percentage raise as other UC employees?'), 
+        html.H4('Ever wonder what your compensation might be if you received the same percentage raise as other UC employees?'), 
         html.H6('This plot displays how your specified initial wage would change if you received the same year-to-year percentage-based raises of each employee'),
         html.H6('(Note that only people with data that spans the selected years are displayed here.)'),   
         dcc.Graph(id=ids.PROJECTED_WAGES_LINE_PLOT, config={'displayModeBar': False}),
         html.Hr(),
-        dcc.Markdown('Percentage-based raises are **inherently regressive**. Given the same percentage raise, higher-earners receive a larger raise in absolute dollar amount compared to lower-earners. This discrepancy is drastic when comparing two employees with vastly different earnings. Compounded year after year, this discrepancy can grow at an exorbitant rate.'),
+        html.H4('Percentage-based raises are inherently regressive.'),
+        html.H6('Given the same percentage raise, higher-earners receive a larger raise in absolute dollar amount compared to lower-earners. This discrepancy is drastic when comparing two employees with vastly different earnings. Compounded year after year, this discrepancy can grow at an exorbitant rate.'),
         html.H6('The following plot displays the absolute change in compensation over the selected time range. By comparing the length of the line connecting the dots, you can get a sense of the absolute change in compensation between the employees.'),
         dcc.Graph(id=ids.LOLLIPOP_CHART, config={'displayModeBar': False}),
         html.Hr(),
@@ -340,7 +341,7 @@ def search_names(n_clicks, search_name):
     State(ids.NAME_ADDED_DROPDOWN, "options"),
     prevent_initial_call=True,
 )
-def add_name_to_dropdown(n_clicks, active_cell, data, value: list[str], options: list[str]):
+def add_name_to_dropdown(n_clicks, active_cell, data, value, options):
     if active_cell is None:
         return value, options
 
