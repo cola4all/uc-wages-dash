@@ -13,9 +13,9 @@ app.title = "UC Employee Wages Dashboard"
 
 # define paths
 APP_PATH = str(pathlib.Path(__file__).parent.resolve())
-JOB_DATA_PATH =  os.path.join(APP_PATH, "data", "salaries.csv")
-NAME_1_DATA_PATH =  os.path.join(APP_PATH, "data", "salaries_by_name_1.csv")
-NAME_2_DATA_PATH =  os.path.join(APP_PATH, "data", "salaries_by_name_2.csv")    # break into 2 files to fit w/in github size limits
+JOB_DATA_PATH =  os.path.join(APP_PATH, "assets", "salaries.csv")
+NAME_1_DATA_PATH =  os.path.join(APP_PATH, "assets", "salaries_by_name_1.csv")
+NAME_2_DATA_PATH =  os.path.join(APP_PATH, "assets", "salaries_by_name_2.csv")    # break into 2 files to fit w/in github size limits
 
 # create schemas so that you don't need to remember the labels
 class DataSchema:
