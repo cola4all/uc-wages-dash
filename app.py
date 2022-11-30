@@ -6,10 +6,10 @@ import plotly.graph_objects as go
 import pandas as pd
 import os, pathlib
 
-app = Dash(external_stylesheets=[dbc.themes.FLATLY])
+app = Dash(__name__, external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
 
-app.title = "UC Wage Projection - How does your compensation stack against cost of living?"
+app.title = "UC Employee Wages Dashboard"
 
 # define paths
 APP_PATH = str(pathlib.Path(__file__).parent.resolve())
@@ -245,6 +245,7 @@ app.layout = html.Div(
             className = "title-container",
             children=[
                 html.H1(app.title),
+                html.H3('How does your compensation stack up?'),
                 html.Hr(),
                 html.H4("by POISE"),
             ]

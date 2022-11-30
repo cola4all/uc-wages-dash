@@ -1,17 +1,17 @@
 html {
-    background: #EEF1EA;
+    background: #BDE3F6;
     margin: 0px;
     padding: 0px;
 }
 
 body {
-    background: #EEF1EA;
+    background: #BDE3F6;
     margin: 0px;
     padding: 0px;
 }
 
 hr {
-    border-top: 2px solid gray;
+    border-top: 2px solid #00A3AD;
 }
 
 .app-div{
@@ -23,7 +23,7 @@ hr {
 .title-container {
     width: 100%;
     text-align: left;
-    background: #2A4B09;
+    background: #005581;
     color: whitesmoke;
     padding-left: 1rem;
     padding-bottom: 1rem;
@@ -31,7 +31,7 @@ hr {
 }
 
 .inputs-container {
-    background: #c1dbc1;
+    background: #00A3AD;
     padding: 1rem;
     border-radius: 1rem;
 }
@@ -53,7 +53,7 @@ hr {
 }
 
 #name-container {
-    background: #c1dbc1;
+    background: #56999c;
     padding: 1rem;
     border-radius: 1rem;
     margin-top: 1rem;
