@@ -7,6 +7,8 @@ import pandas as pd
 import os, pathlib
 
 app = Dash(external_stylesheets=[dbc.themes.FLATLY])
+server = app.server
+
 app.title = "UC Wage Projection - How does your compensation stack against cost of living?"
 
 # define paths
@@ -516,4 +518,4 @@ def update_plots(initial_wage: list[float], jobs: list[str], names = list[str], 
 
 # run script
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=False)
