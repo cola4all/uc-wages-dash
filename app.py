@@ -292,7 +292,7 @@ app.layout = html.Div(
     State(ids.NAME_SEARCH_INPUT, "value"),
     prevent_initial_call=True,
 )
-def search_names(n_clicks, search_name: str):
+def search_names(n_clicks, search_name):
     # handle if names is empty
     if search_name is None:
         return '', ''
@@ -357,7 +357,7 @@ def add_name_to_dropdown(n_clicks, active_cell, data, value: list[str], options:
     Input(ids.INITIAL_WAGE_INPUT, "value"),
     prevent_initial_call=True
 )
-def update_initial_wage_input(dropdown_value: list[str], input_value: list[float]):
+def update_initial_wage_input(dropdown_value, input_value):
     initial_year = '2011'     # for now, initial year is 2011
 
     trigger_id = ctx.triggered[0]["prop_id"].split(".")[0]
@@ -387,7 +387,7 @@ def update_initial_wage_input(dropdown_value: list[str], input_value: list[float
     Input(ids.NAME_ADDED_DROPDOWN, "value"),
     Input(ids.YEAR_RANGE_SLIDER,"value")
 )
-def update_plots(initial_wage: list[float], jobs: list[str], names = list[str], years = list[str]):
+def update_plots(initial_wage, jobs, names, years):
     min_year = str(years[0])
     max_year = str(years[1])
     ## plot using jobs data first
