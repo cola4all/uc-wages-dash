@@ -61,6 +61,11 @@ class colors:
 # load data
 df_jobs = pd.read_csv(
     JOB_DATA_PATH,
+    usecols=[
+        DataSchema.NAME,
+        DataSchema.JOB,
+        DataSchema.PAY,
+        DataSchema.YEAR],
     dtype={
         DataSchema.NAME: str,
         DataSchema.JOB: str,
@@ -73,6 +78,11 @@ unique_jobs = list(set(all_jobs))
 
 df_names = pd.read_csv(
     NAME_1_DATA_PATH,
+    usecols=[
+        DataSchema.NAME,
+        DataSchema.JOB,
+        DataSchema.PAY,
+        DataSchema.YEAR],
     dtype={
         DataSchema.NAME: str,
         DataSchema.JOB: str,
@@ -84,6 +94,12 @@ df_names = pd.read_csv(
 df_names = pd.concat([df_names, 
     pd.read_csv(
         NAME_2_DATA_PATH,
+        usecols=[
+            DataSchema.NAME,
+            DataSchema.JOB,
+            DataSchema.PAY,
+            DataSchema.YEAR
+        ],
         dtype={
             DataSchema.NAME: str,
             DataSchema.JOB: str,
@@ -518,4 +534,4 @@ def update_plots(initial_wage: list[float], jobs: list[str], names = list[str], 
 
 # run script
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
