@@ -64,11 +64,13 @@ df_jobs = pd.read_csv(
     usecols=[
         DataSchema.NAME,
         DataSchema.JOB,
+        DataSchema.JOB_ABBREVIATED,
         DataSchema.PAY,
         DataSchema.YEAR],
     dtype={
         DataSchema.NAME: str,
         DataSchema.JOB: str,
+        DataSchema.JOB_ABBREVIATED: str,
         DataSchema.PAY: float,
         DataSchema.YEAR: str
     }
