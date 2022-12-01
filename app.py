@@ -283,6 +283,10 @@ app.layout = html.Div(
         html.Hr(),
         html.H6('Placeholder for comparing wrt COL'),
         html.H6('Placeholder for something about data sources'),
+
+        # data stores
+        dcc.Store(id='jobs-data'),
+        dcc.Store(id='names-data')
     ]
 )
 
@@ -381,13 +385,13 @@ def update_initial_wage_input(dropdown_value, input_value):
 
 # ------------- callback - update plots ----------------
 @app.callback(
-    Output(ids.PROJECTED_WAGES_LINE_PLOT, "figure"),
-    Output(ids.REAL_WAGES_LINE_PLOT, "figure"),
-    Output(ids.LOLLIPOP_CHART, "figure"),
-    Input(ids.INITIAL_WAGE_INPUT, "value"),
-    Input(ids.RATE_JOB_DROPDOWN, "value"),
-    Input(ids.NAME_ADDED_DROPDOWN, "value"),
-    Input(ids.YEAR_RANGE_SLIDER,"value")
+        Output(ids.PROJECTED_WAGES_LINE_PLOT, "figure"),
+        Output(ids.REAL_WAGES_LINE_PLOT, "figure"),
+        Output(ids.LOLLIPOP_CHART, "figure"),
+        Input(ids.INITIAL_WAGE_INPUT, "value"),
+        Input(ids.RATE_JOB_DROPDOWN, "value"),
+        Input(ids.NAME_ADDED_DROPDOWN, "value"),
+        Input(ids.YEAR_RANGE_SLIDER,"value")
 )
 def update_plots(initial_wage, jobs, names, years):
     min_year = str(years[0])
@@ -397,11 +401,14 @@ def update_plots(initial_wage, jobs, names, years):
     logical_array_jobs = (df_jobs[DataSchema.JOB].isin(jobs)) & (df_jobs[DataSchema.YEAR].astype(int) >= int(min_year)) & (df_jobs[DataSchema.YEAR].astype(int) <= int(max_year))
     dff_jobs = df_jobs[logical_array_jobs]
 
-    ##
-    logical_array_names = (df_names[DataSchema.NAME].isin(names)) & (df_names[DataSchema.YEAR].astype(int) >= int(min_year)) & (df_names[DataSchema.YEAR].astype(int) <= int(max_year))
-    dff_names = df_names[logical_array_names]
-    dff_names[DataSchema.JOB_ABBREVIATED] = dff_names[DataSchema.NAME]      # keep consistent with dff_jobs
-
+    # if names list is empty, don't bother transferring the names_df
+    # if not names:
+    #     logical_array_names = (df_names[DataSchema.NAME].isin(names)) & (df_names[DataSchema.YEAR].astype(int) >= int(min_year)) & (df_names[DataSchema.YEAR].astype(int) <= int(max_year))
+    #     dff_names = df_names[logical_array_names]
+    #     dff_names[DataSchema.JOB_ABBREVIATED] = dff_names[DataSchema.NAME]      # keep consistent with dff_jobs
+    # else:
+    #     dff_names = pd.DataFrame()
+    dff_names = pd.DataFrame()
     
     dff_combined = pd.concat([dff_jobs, dff_names])
 
